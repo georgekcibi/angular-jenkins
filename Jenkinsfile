@@ -10,7 +10,7 @@ environment {
 
     stage('Stopping running container') {
         steps {
-            sh 'docker stop angular'
+            sh 'sudo docker stop angular || true'
         }
     }
 
@@ -31,7 +31,7 @@ environment {
     stage('Push Docker image to the registry') {
      steps {
         withDockerRegistry([ credentialsId: "dockerhub", url: "" ]) {
-            sh 'docker push $registry:latest'
+            sh 'sudo docker push $registry:latest'
 
         }
         }
@@ -39,8 +39,8 @@ environment {
 
     stage('Tagging image') {
         steps {
-            sh 'docker tag $registry:latest $registry:$BUILD_NUMBER'
-            sh 'docker run -p 4200:4200 -d --name angular $registry:$BUILD_NUMBER'
+            sh 'sudo docker tag $registry:latest $registry:$BUILD_NUMBER'
+            sh 'sudo docker run -p 4200:4200 -d --name angular $registry:$BUILD_NUMBER'
 
         }
     }
