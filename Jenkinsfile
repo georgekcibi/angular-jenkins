@@ -11,6 +11,8 @@ environment {
     stage('Stopping running container') {
         steps {
             sh 'sudo docker stop angular || true'
+            sh 'sudo docker rm angular || true' 
+            sh 'docker image prune -a -f || true'
         }
     }
 
