@@ -16,7 +16,7 @@ environment {
 
     stage('Clonning repro') {
      steps {
-             git branch: 'main', changelog: false, poll: true, url: 'https://github.com/georgekcibi/angular-jenkins.git'
+             git branch: 'angular', changelog: false, poll: true, url: 'https://github.com/georgekcibi/angular-jenkins.git'
             }
         }
 
