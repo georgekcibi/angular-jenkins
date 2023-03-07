@@ -30,10 +30,10 @@ environment {
 
     stage('Push Docker image to the registry') {
      steps {
-        withDockerRegistry([ credentialsId: "dockerhub", url: "" ]) {
+        sudo sh -c 'withDockerRegistry([ credentialsId: "dockerhub", url: "" ]) {
             sh 'sudo docker push $registry:latest'
 
-        }
+        }'
         }
    }
 
