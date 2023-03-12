@@ -9,5 +9,5 @@ FROM httpd:2.4-alpine
 EXPOSE 80
 WORKDIR /usr/local/apache2/htdocs
 RUN rm -rf *
-COPY --from=builder /app/dist/keyshell/* /usr/local/apache2/htdocs/
+COPY --from=builder /app/dist/keysell/* /usr/local/apache2/htdocs/
 CMD ["httpd-foreground"]
